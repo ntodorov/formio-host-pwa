@@ -12,24 +12,81 @@ A Progressive Web App (PWA) built with React that hosts a Form.io form with offl
 ## Setup
 
 1. **Install Dependencies**:
+
    ```bash
    npm install
    ```
 
 2. **Run Development Server**:
+
    ```bash
    npm start
    ```
+
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 3. **Build for Production**:
+
    ```bash
    npm run build
    ```
+
    Builds the app for production to the `build` folder.
 
 4. **Deploy**:
    Serve the `build` folder using a static site host (e.g., Netlify, Vercel) for PWA features.
+
+## Docker
+
+### Build Docker Image
+
+Build the Docker image:
+
+```bash
+docker build -t formio-pwa .
+```
+
+### Run Docker Container
+
+Run the container on port 3000:
+
+```bash
+docker run -p 3000:80 formio-pwa
+```
+
+Then access your app at [http://localhost:3000](http://localhost:3000)
+
+### Run with Environment Variables
+
+If you need to pass environment variables:
+
+```bash
+docker run -p 3000:80 \
+  -e REACT_APP_API_URL=your_api_url \
+  -e REACT_APP_FORM_ID=your_form_id \
+  formio-pwa
+```
+
+### Docker Compose (Optional)
+
+Create a `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+services:
+  formio-pwa:
+    build: .
+    ports:
+      - '3000:80'
+    environment:
+      - REACT_APP_API_URL=your_api_url
+```
+
+Then run:
+
+```bash
+docker-compose up
+```
 
 ## PWA Installation
 
