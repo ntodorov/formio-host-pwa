@@ -19,22 +19,11 @@ RUN npm run build
 # Production stage
 FROM nginx:alpine
 
-# Copy custom nginx configuration
+# Copy built application artifacts
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Copy nginx configuration for SPA routing
-RUN echo 'server { \
-    listen 80; \
-    location / { \
-        root /usr/share/nginx/html; \
-        index index.html index.htm; \
-        try_files $uri $uri/ /index.html; \
-    } \
-    error_page 500 502 503 504 /50x.html; \
-    location = /50x.html { \
-        root /usr/share/nginx/html; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+# Copy custom nginx configuration for SPA routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80

@@ -71,17 +71,6 @@ docker run -p 3000:80 \
 
 Create a `docker-compose.yml` file:
 
-```yaml
-version: '3.8'
-services:
-  formio-pwa:
-    build: .
-    ports:
-      - '3000:80'
-    environment:
-      - REACT_APP_API_URL=your_api_url
-```
-
 Then run:
 
 ```bash
