@@ -9,15 +9,14 @@ const root = createRoot(container!);
 const domain = "uat-login.aer.ca";
 const clientId = "atDvYwnvwlsJAapr32avLarQoyZde6nx";
 const redirectUri = window.location.origin;
-const audience = "https://graph.onestopuat.aer.ca";
+//const audience = "https://graph.onestopuat.aer.ca";
 
 root.render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
     authorizationParams={{
-      redirect_uri: redirectUri,
-      audience: audience,
+      redirect_uri: redirectUri
     }}
   >
     <App />
