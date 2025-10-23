@@ -121,3 +121,5 @@ Temporary Items
 # Temporary files
 *.tmp
 *.temp
+
+/style-example

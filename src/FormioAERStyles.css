@@ -1,0 +1,443 @@
+/**
+ * AER OneStop Style Overrides for Form.io
+ * Based on the OneStop application design system
+ */
+
+/* ===== Base Form Styling ===== */
+.formio-form {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  line-height: 1.5714285714285714 !important;
+}
+
+/* ===== Form Container ===== */
+.formio-component {
+  margin-bottom: 24px !important;
+}
+
+/* ===== Labels ===== */
+.formio-component label,
+.formio-component .control-label {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+  line-height: 1.5714285714285714 !important;
+}
+
+/* Required field indicator */
+.formio-component label.field-required::before,
+.formio-component .control-label.field-required::before {
+  content: '* ' !important;
+  color: #d01d26 !important;
+  font-family: SimSun, sans-serif !important;
+  margin-right: 4px !important;
+}
+
+/* ===== Input Fields ===== */
+.formio-component input[type='text'],
+.formio-component input[type='email'],
+.formio-component input[type='password'],
+.formio-component input[type='number'],
+.formio-component input[type='tel'],
+.formio-component input[type='url'],
+.formio-component input[type='date'],
+.formio-component input[type='time'],
+.formio-component input[type='datetime-local'],
+.formio-component textarea {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  padding: 4px 11px !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  background-color: #ffffff !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+  line-height: 1.5714285714285714 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Input Focus State */
+.formio-component input[type='text']:focus,
+.formio-component input[type='email']:focus,
+.formio-component input[type='password']:focus,
+.formio-component input[type='number']:focus,
+.formio-component input[type='tel']:focus,
+.formio-component input[type='url']:focus,
+.formio-component input[type='date']:focus,
+.formio-component input[type='time']:focus,
+.formio-component input[type='datetime-local']:focus,
+.formio-component textarea:focus {
+  border-color: #066ea8 !important;
+  box-shadow: 0 0 0 2px rgba(6, 110, 168, 0.19) !important;
+  outline: none !important;
+}
+
+/* Input Placeholder */
+.formio-component input::placeholder,
+.formio-component textarea::placeholder {
+  color: rgba(0, 0, 0, 0.25) !important;
+  opacity: 1 !important;
+}
+
+/* Disabled Inputs */
+.formio-component input:disabled,
+.formio-component textarea:disabled {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+  cursor: not-allowed !important;
+}
+
+/* ===== Select Dropdowns ===== */
+.formio-component select,
+.formio-component .form-control.form-select {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  padding: 4px 11px !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  background-color: #ffffff !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+  height: 32px !important;
+  width: 100% !important;
+  cursor: pointer !important;
+}
+
+.formio-component select:focus,
+.formio-component .form-control.form-select:focus {
+  border-color: #066ea8 !important;
+  box-shadow: 0 0 0 2px rgba(6, 110, 168, 0.19) !important;
+  outline: none !important;
+}
+
+/* ===== Checkboxes and Radio Buttons ===== */
+.formio-component input[type='checkbox'],
+.formio-component input[type='radio'] {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 8px !important;
+  cursor: pointer !important;
+  accent-color: #066ea8 !important;
+}
+
+.formio-component input[type='checkbox']:focus,
+.formio-component input[type='radio']:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 2px rgba(6, 110, 168, 0.19) !important;
+}
+
+.formio-component .form-check-label,
+.formio-component .radio-label {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  cursor: pointer !important;
+  margin-left: 0 !important;
+  vertical-align: middle !important;
+}
+
+/* ===== Buttons ===== */
+.formio-component button,
+.formio-component .btn {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 4px 15px !important;
+  border-radius: 6px !important;
+  height: 32px !important;
+  line-height: 1.5714285714285714 !important;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+  cursor: pointer !important;
+  border: 1px solid transparent !important;
+  box-sizing: border-box !important;
+}
+
+/* Primary Button */
+.formio-component .btn-primary,
+.formio-component button[type='submit'] {
+  background-color: #066ea8 !important;
+  border-color: #066ea8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 0 rgba(6, 110, 168, 0.1) !important;
+}
+
+.formio-component .btn-primary:hover,
+.formio-component button[type='submit']:hover {
+  background-color: #055c8d !important;
+  border-color: #055c8d !important;
+  color: #ffffff !important;
+}
+
+.formio-component .btn-primary:active,
+.formio-component button[type='submit']:active {
+  background-color: #044972 !important;
+  border-color: #044972 !important;
+}
+
+/* Secondary Button */
+.formio-component .btn-secondary,
+.formio-component .btn-default {
+  background-color: #ffffff !important;
+  border-color: #d9d9d9 !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+.formio-component .btn-secondary:hover,
+.formio-component .btn-default:hover {
+  color: #066ea8 !important;
+  border-color: #066ea8 !important;
+  background-color: #ffffff !important;
+}
+
+/* Danger/Delete Button */
+.formio-component .btn-danger {
+  background-color: #d01d26 !important;
+  border-color: #d01d26 !important;
+  color: #ffffff !important;
+}
+
+.formio-component .btn-danger:hover {
+  background-color: #a81620 !important;
+  border-color: #a81620 !important;
+}
+
+/* Success Button */
+.formio-component .btn-success {
+  background-color: #74aa50 !important;
+  border-color: #74aa50 !important;
+  color: #ffffff !important;
+}
+
+.formio-component .btn-success:hover {
+  background-color: #5f8e40 !important;
+  border-color: #5f8e40 !important;
+}
+
+/* ===== Validation States ===== */
+/* Error State */
+.formio-component.has-error input,
+.formio-component.has-error textarea,
+.formio-component.has-error select,
+.formio-component .is-invalid {
+  border-color: #d01d26 !important;
+}
+
+.formio-component.has-error input:focus,
+.formio-component.has-error textarea:focus,
+.formio-component.has-error select:focus,
+.formio-component .is-invalid:focus {
+  border-color: #d01d26 !important;
+  box-shadow: 0 0 0 2px rgba(208, 29, 38, 0.19) !important;
+}
+
+.formio-component .formio-errors,
+.formio-component .invalid-feedback,
+.formio-component .error {
+  color: #d01d26 !important;
+  font-size: 14px !important;
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  margin-top: 4px !important;
+  display: block !important;
+  line-height: 1.5714285714285714 !important;
+}
+
+/* Warning State */
+.formio-component.has-warning input,
+.formio-component.has-warning textarea,
+.formio-component.has-warning select {
+  border-color: #f0ad4e !important;
+}
+
+.formio-component .warning-feedback {
+  color: #f0ad4e !important;
+  font-size: 14px !important;
+}
+
+/* Success State */
+.formio-component.has-success input,
+.formio-component.has-success textarea,
+.formio-component.has-success select {
+  border-color: #74aa50 !important;
+}
+
+/* ===== Help Text ===== */
+.formio-component .help-block,
+.formio-component .form-text,
+.formio-component .text-muted {
+  color: rgba(0, 0, 0, 0.45) !important;
+  font-size: 14px !important;
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  margin-top: 4px !important;
+  line-height: 1.5714285714285714 !important;
+}
+
+/* ===== Fieldset/Panel ===== */
+.formio-component fieldset,
+.formio-component .panel {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  background-color: #ffffff !important;
+}
+
+.formio-component legend,
+.formio-component .panel-heading {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+  border-bottom: 1px solid #d9d9d9 !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 16px !important;
+  width: 100% !important;
+}
+
+/* ===== Tables ===== */
+.formio-component table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+}
+
+.formio-component table th,
+.formio-component table td {
+  border: 1px solid #d9d9d9 !important;
+  padding: 8px 16px !important;
+  text-align: left !important;
+}
+
+.formio-component table th {
+  background-color: #fafafa !important;
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.88) !important;
+}
+
+.formio-component table tbody tr:hover {
+  background-color: #f5f5f5 !important;
+}
+
+/* ===== File Upload ===== */
+.formio-component .file-upload {
+  border: 1px dashed #d9d9d9 !important;
+  border-radius: 6px !important;
+  padding: 16px !important;
+  text-align: center !important;
+  background-color: #fafafa !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+}
+
+.formio-component .file-upload:hover {
+  border-color: #066ea8 !important;
+  background-color: #f0f4f8 !important;
+}
+
+/* ===== Tabs ===== */
+.formio-component .nav-tabs {
+  border-bottom: 1px solid #d9d9d9 !important;
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+}
+
+.formio-component .nav-tabs .nav-link {
+  color: rgba(0, 0, 0, 0.88) !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+}
+
+.formio-component .nav-tabs .nav-link:hover {
+  color: #066ea8 !important;
+  border-bottom-color: #066ea8 !important;
+}
+
+.formio-component .nav-tabs .nav-link.active {
+  color: #066ea8 !important;
+  border-bottom-color: #066ea8 !important;
+  font-weight: 500 !important;
+}
+
+/* ===== Tooltips ===== */
+.formio-component .tooltip,
+.formio-component [data-tooltip] {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  color: #ffffff !important;
+  padding: 6px 8px !important;
+  border-radius: 6px !important;
+  max-width: 250px !important;
+}
+
+/* ===== Loading/Spinner ===== */
+.formio-component .formio-loader,
+.formio-component .spinner-border {
+  border-color: #066ea8 !important;
+  border-right-color: transparent !important;
+}
+
+/* ===== Data Grid/Table Component ===== */
+.formio-component .formio-data-grid table {
+  background-color: #ffffff !important;
+}
+
+.formio-component .formio-data-grid .btn-sm {
+  padding: 0px 7px !important;
+  font-size: 14px !important;
+  height: 24px !important;
+  line-height: 22px !important;
+}
+
+/* ===== Date Picker ===== */
+.formio-component .flatpickr-calendar {
+  font-family: Selawik, Arial, Helvetica, sans-serif !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.formio-component .flatpickr-day.selected {
+  background-color: #066ea8 !important;
+  border-color: #066ea8 !important;
+}
+
+.formio-component .flatpickr-day:hover {
+  background-color: #f0f4f8 !important;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .formio-component input,
+  .formio-component textarea,
+  .formio-component select {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+}
+
+/* ===== Accessibility Improvements ===== */
+.formio-component *:focus-visible {
+  outline: 2px solid #066ea8 !important;
+  outline-offset: 2px !important;
+}
+
+/* Screen reader only */
+.formio-component .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

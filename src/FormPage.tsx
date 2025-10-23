@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Form, FormioProvider } from "@formio/react";
-import { useAuth0 } from "@auth0/auth0-react";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import { Form, FormioProvider } from '@formio/react';
+import { useAuth0 } from '@auth0/auth0-react';
+import './App.css';
+import './FormioAERStyles.css';
 
 const FormPage = () => {
   const { logout } = useAuth0();
   const [formioOptions, setFormioOptions] = useState({ headers: {} });
 
-  const projectUrl = "https://formio-api-dev.azurewebsites.net/tqmhwzomotajfzu";
+  const projectUrl = 'https://formio-api-dev.azurewebsites.net/tqmhwzomotajfzu';
   const [formUrl, setFormUrl] = useState(`${projectUrl}/publicaerform1`);
 
   // if (!isAuthenticated) {loginWithRedirect()}
@@ -40,11 +41,15 @@ const FormPage = () => {
       <div className="app-container">
         <header className="app-header">
           <div className="header-content">
-            <h1 className="app-title">Form.io PWA</h1>
-            <p className="app-subtitle">Dynamic Form Renderer</p>
+            <h1 className="app-title">AER Form Portal</h1>
+            <p className="app-subtitle">
+              Alberta Energy Regulator - Dynamic Form Renderer
+            </p>
           </div>
-          <div>
-            <button onClick={() => logout()}>Log Out</button>
+          <div className="header-actions">
+            <button className="btn btn-secondary" onClick={() => logout()}>
+              Log Out
+            </button>
           </div>
         </header>
 
@@ -55,7 +60,7 @@ const FormPage = () => {
               <input
                 type="text"
                 className="form-input"
-                value={formUrl.replace(projectUrl + "/", "")}
+                value={formUrl.replace(projectUrl + '/', '')}
                 onChange={(e) => setFormUrl(`${projectUrl}/${e.target.value}`)}
                 placeholder="e.g., publicaerform1"
               />
@@ -71,10 +76,10 @@ const FormPage = () => {
               key={formUrl}
               src={formUrl}
               onSubmit={(submission) =>
-                console.log("Form submitted:", submission)
+                console.log('Form submitted:', submission)
               }
-              onError={(error) => console.error("Form error:", error)}
-              onFormReady={(form) => console.log("Form ready:", form)}
+              onError={(error) => console.error('Form error:', error)}
+              onFormReady={(form) => console.log('Form ready:', form)}
             />
           </div>
         </main>
