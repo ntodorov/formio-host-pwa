@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, FormioProvider } from '@formio/react';
 import { Formio } from '@formio/js';
 import './App.css';

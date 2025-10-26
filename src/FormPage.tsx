@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Form, FormioProvider } from '@formio/react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
@@ -6,7 +6,6 @@ import './FormioAERStyles.css';
 
 const FormPage = () => {
   const { logout } = useAuth0();
-  const [formioOptions, setFormioOptions] = useState({ headers: {} });
 
   const projectUrl = 'https://formio-api-dev.azurewebsites.net/tqmhwzomotajfzu';
   const [formUrl, setFormUrl] = useState(`${projectUrl}/publicaerform1`);
