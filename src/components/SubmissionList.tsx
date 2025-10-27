@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Formio } from '@formio/js';
 import type { Submission, SubmissionListProps } from '../types/submission';
 import SubmissionCard from './SubmissionCard';
+import SubmissionDetailModal from './SubmissionDetailModal';
 
 const SubmissionList = ({ formUrl }: SubmissionListProps) => {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
@@ -86,50 +87,11 @@ const SubmissionList = ({ formUrl }: SubmissionListProps) => {
 
       {/* Details Modal */}
       {selectedSubmission && (
-        <div className="submission-modal-overlay" onClick={handleCloseModal}>
-          <div
-            className="submission-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="submission-modal-header">
-              <h3>Submission Details</h3>
-              <button className="modal-close-btn" onClick={handleCloseModal}>
-                ×
-              </button>
-            </div>
-            <div className="submission-modal-body">
-              <div className="modal-section">
-                <h4>Submission ID</h4>
-                <p className="modal-id">{selectedSubmission._id}</p>
-              </div>
-              {selectedSubmission.created && (
-                <div className="modal-section">
-                  <h4>Created</h4>
-                  <p>{new Date(selectedSubmission.created).toLocaleString()}</p>
-                </div>
-              )}
-              {selectedSubmission.modified && (
-                <div className="modal-section">
-                  <h4>Last Modified</h4>
-                  <p>
-                    {new Date(selectedSubmission.modified).toLocaleString()}
-                  </p>
-                </div>
-              )}
-              <div className="modal-section">
-                <h4>Submission Data</h4>
-                <pre className="modal-data">
-                  {JSON.stringify(selectedSubmission.data, null, 2)}
-                </pre>
-              </div>
-            </div>
-            <div className="submission-modal-footer">
-              <button className="btn btn-secondary" onClick={handleCloseModal}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
+        <SubmissionDetailModal
+          submission={selectedSubmission}
+          formUrl={formUrl}
+          onClose={handleCloseModal}
+        />
       )}
     </div>
   );

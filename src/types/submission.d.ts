@@ -25,3 +25,9 @@ export interface SubmissionCardProps {
   submission: Submission;
   onViewDetails?: (submission: Submission) => void;
 }
+
+export interface SubmissionDetailModalProps {
+  submission: Submission;
+  formUrl: string;
+  onClose: () => void;
+}
