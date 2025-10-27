@@ -33,7 +33,11 @@ const FormPage = () => {
 
   const handleLogout = (): void => {
     Formio.logout(); //formio logout
-    logout(); //auth0 logout
+    logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    }); //auth0 logout
   };
 
   useEffect(() => {

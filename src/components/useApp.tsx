@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import log from 'loglevel';
 import { useAuth0 } from '@auth0/auth0-react';
 import config from '../config';
@@ -29,7 +29,7 @@ export const useApp = () => {
         await loginWithRedirect();
       }
     })();
-  }, [isLoading]);
+  }, [isLoading, loginWithRedirect, user]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -58,7 +58,13 @@ export const useApp = () => {
             }
 
             if (claims.exp) {
-              handleTimeout(claims.exp, logout);
+              handleTimeout(claims.exp, () =>
+                logout({
+                  logoutParams: {
+                    returnTo: window.location.origin,
+                  },
+                })
+              );
             }
             setIsTokenParsed(true);
           }
@@ -67,7 +73,7 @@ export const useApp = () => {
           log.error('Cannot silently get token', err);
         });
     }
-  }, [getAccessTokenSilently, isAuthenticated]);
+  }, [getAccessTokenSilently, getIdTokenClaims, isAuthenticated, logout, user]);
 
   return {
     isLoading,
