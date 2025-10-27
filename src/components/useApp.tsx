@@ -1,13 +1,13 @@
 import  { useEffect, useState } from 'react';
 import log from 'loglevel';
 import { useAuth0 } from '@auth0/auth0-react';
-import config from './config';
+import config from '../config';
 import {
   getBaMetaFromUser,
   getUserType,
   handleTimeout,
-} from './utilities/utils';
-import { UserType } from './utilities/constants';
+} from '../utilities/utils';
+import { UserType } from '../utilities/constants';
 
 export const useApp = () => {
   const {

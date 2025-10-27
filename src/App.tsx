@@ -1,5 +1,5 @@
-import FormPage from './FormPage';
-import { useApp } from './useApp';
+import FormPage from './components/FormPage';
+import { useApp } from './components/useApp';
 
 const App: React.FC = () => {
   const { isLoading, isTokenParsed, error, isAuthenticated } = useApp();
