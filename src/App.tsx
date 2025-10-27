@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import FormPage from './FormPage';
+import { useApp } from './useApp';
 
-function App() {
-  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
+const App: React.FC = () => {
+  const { isLoading, isTokenParsed, error, isAuthenticated } = useApp();
 
-  useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      loginWithRedirect();
-    }
-  }, [isLoading, isAuthenticated, loginWithRedirect]);
+  if (isLoading) return <h3>Loading...</h3>;
+  if (!isTokenParsed) return <h3>Logging in, please wait...</h3>;
+  if (error) return <h3>Ow Snap! Close this tab and retry</h3>;
+  if (!isAuthenticated) return <h3>Not logged in</h3>;
 
-  return <FormPage />;
-}
+  return (
+    <FormPage />
+  );
+};
 
 export default App;

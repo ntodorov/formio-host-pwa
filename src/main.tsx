@@ -6,8 +6,7 @@ import App from './App.tsx';
 
 const domain = 'uat-login.aer.ca';
 const clientId = 'atDvYwnvwlsJAapr32avLarQoyZde6nx';
-const redirectUri = window.location.origin;
-//const audience = "https://graph.onestopuat.aer.ca"
+const audience = 'https://graph.onestopuat.aer.ca';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,7 +14,8 @@ createRoot(document.getElementById('root')!).render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: redirectUri,
+        redirect_uri: window.location.origin,
+        audience: audience,
       }}
     >
       <App />
