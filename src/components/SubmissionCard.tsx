@@ -5,6 +5,7 @@ const SubmissionCard = ({ submission, onViewDetails }: SubmissionCardProps) => {
   const formatDate = (dateString?: string): string => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return 'N/A';
     return date.toLocaleString('en-US', {
       year: 'numeric',
       month: 'short',
