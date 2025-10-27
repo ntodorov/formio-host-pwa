@@ -1,13 +1,68 @@
+# Dependencies
 node_modules
 npm-debug.log
+
+# Build outputs
+dist
 build
+dev-dist
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Git
 .git
 .gitignore
+.gitattributes
+
+# Documentation
 README.md
-.env
-.DS_Store
+*.md
+!package.json
+
+# IDE and Editor
 .vscode
 .idea
-*.log
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing and Coverage
 coverage
+.nyc_output
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Logs
+*.log
+logs
+
+# Cache
 .cache
+.eslintcache
+.stylelintcache
+
+# Misc
+.editorconfig
+.prettierrc
+.prettierignore
+eslint.config.js
+# tsconfig.*.json - COMMENTED OUT: These files are needed for the build
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Example/Style files
+style-example

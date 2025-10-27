@@ -13,7 +13,15 @@ interface IBaMeta {
   baMembership: [BaMembership];
 }
 
-export const getUserType = (user = {}): UserType => {
+interface UserClaims {
+  'https://schema.aer.ca/userType'?: string;
+  'https://schema.aer.ca/primaryBaId'?: string;
+  'https://schema.aer.ca/primaryBaName'?: string;
+  'https://schema.aer.ca/baMembership'?: [BaMembership];
+  [key: string]: any;
+}
+
+export const getUserType = (user: UserClaims = {} as UserClaims): UserType => {
   if (
     !Object.prototype.hasOwnProperty.call(
       user,
@@ -34,7 +42,9 @@ export const getUserType = (user = {}): UserType => {
   }
 };
 
-export const getBaMetaFromUser = (user = {}): IBaMeta => {
+export const getBaMetaFromUser = (
+  user: UserClaims = {} as UserClaims
+): IBaMeta => {
   if (
     !user['https://schema.aer.ca/primaryBaId'] ||
     !user['https://schema.aer.ca/primaryBaName'] ||
