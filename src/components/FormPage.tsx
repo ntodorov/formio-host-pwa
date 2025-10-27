@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Form, FormioProvider } from '@formio/react';
 import { Formio } from '@formio/js';
 import { OfflinePlugin } from '@formio/offline-plugin';
@@ -7,6 +7,7 @@ import { useApp } from './useApp';
 import Header from './Header';
 import { UserType } from '../utilities/constants';
 import SubmissionList from './SubmissionList';
+import OfflineSubmissionQueue from './OfflineSubmissionQueue';
 import '../App.css';
 import '../FormioAERStyles.css';
 import premium from '@formio/premium';
@@ -23,6 +24,8 @@ const FormPage = () => {
   const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
   const [queueLength, setQueueLength] = useState<number>(0);
   const [offlineError, setOfflineError] = useState<unknown>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const formRef = useRef<any>(null);
 
   const baseUrl = 'https://formio-api-dev.azurewebsites.net';
   const projectUrl = 'https://formio-api-dev.azurewebsites.net/tqmhwzomotajfzu';
@@ -80,6 +83,36 @@ const FormPage = () => {
       console.error('Error initializing offline plugin:', error);
     }
   }, [projectUrl]);
+
+  // Pre-cache form when online (Phase 4.1)
+  useEffect(() => {
+    if (navigator.onLine && formUrl) {
+      const formio = new Formio(formUrl);
+      formio
+        .loadForm()
+        .then(() => {
+          console.log('Form cached for offline use:', formUrl);
+        })
+        .catch((error: unknown) => {
+          console.error('Error caching form:', error);
+        });
+    }
+  }, [formUrl]);
+
+  // Pre-cache submissions for internal users (Phase 4.2)
+  useEffect(() => {
+    if (navigator.onLine && formUrl && userType === UserType.Internal) {
+      const formio = new Formio(formUrl);
+      formio
+        .loadSubmissions()
+        .then(() => {
+          console.log('Submissions cached for offline use:', formUrl);
+        })
+        .catch((error: unknown) => {
+          console.error('Error caching submissions:', error);
+        });
+    }
+  }, [formUrl, userType]);
 
   // Monitor online/offline status
   useEffect(() => {
@@ -177,6 +210,19 @@ const FormPage = () => {
   //console.log('Auth0 Token:', accessToken);
   //console.log('Formio Token:', formio.getToken());
 
+  // Handle form submission for external users (Phase 4.3)
+  const handleFormSubmit = (submission: unknown) => {
+    console.log('Form submitted:', submission);
+
+    // Reset form submission to allow multiple new submissions
+    // instead of updating the same submission
+    if (formRef.current && userType === UserType.External) {
+      setTimeout(() => {
+        formRef.current.submission = { data: {} };
+      }, 100);
+    }
+  };
+
   return (
     <>
       <Header
@@ -212,6 +258,13 @@ const FormPage = () => {
 
       <FormioProvider Formio={Formio} baseUrl={baseUrl} projectUrl={projectUrl}>
         <div className="app-container">
+          {/* Offline Queue Component */}
+          <OfflineSubmissionQueue
+            offlinePlugin={offlinePlugin}
+            queueLength={queueLength}
+            isOnline={isOnline}
+          />
+
           <main className="app-main">
             <div className="form-selector">
               <label className="input-label">
@@ -238,11 +291,12 @@ const FormPage = () => {
                 <Form
                   key={formUrl}
                   src={formUrl}
-                  onSubmit={(submission) =>
-                    console.log('Form submitted:', submission)
-                  }
+                  onSubmit={handleFormSubmit}
                   onError={(error) => console.error('Form error:', error)}
-                  onFormReady={(form) => console.log('Form ready:', form)}
+                  onFormReady={(form) => {
+                    console.log('Form ready:', form);
+                    formRef.current = form;
+                  }}
                 />
               </div>
             </main>
