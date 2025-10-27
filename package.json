@@ -12,6 +12,8 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.8.0",
     "@formio/js": "^5.2.2",
+    "@formio/offline-plugin": "^5.2.2",
+    "@formio/premium": "^3.0.7",
     "@formio/react": "^6.1.0",
     "loglevel": "^1.9.2",
     "react": "^19.1.1",

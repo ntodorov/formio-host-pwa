@@ -7,8 +7,12 @@ import { UserType } from '../utilities/constants';
 import SubmissionList from './SubmissionList';
 import '../App.css';
 import '../FormioAERStyles.css';
+import premium from '@formio/premium';
+
+Formio.license = import.meta.env.VITE_FORMIO_PREMIUM_LICENSE_KEY || '';
 
 const FormPage = () => {
+  Formio.use(premium);
   const { logout, isAuthenticated, getAccessTokenSilently, userType } =
     useApp();
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -61,30 +65,30 @@ const FormPage = () => {
     <>
       <Header handleLogout={handleLogout} />
       <FormioProvider Formio={Formio} baseUrl={baseUrl} projectUrl={projectUrl}>
-        <div className='app-container'>
-          <main className='app-main'>
-            <div className='form-selector'>
-              <label className='input-label'>
+        <div className="app-container">
+          <main className="app-main">
+            <div className="form-selector">
+              <label className="input-label">
                 Form Path
                 <input
-                  type='text'
-                  className='form-input'
+                  type="text"
+                  className="form-input"
                   value={formUrl.replace(projectUrl + '/', '')}
                   onChange={(e) =>
                     setFormUrl(`${projectUrl}/${e.target.value}`)
                   }
-                  placeholder='e.g., publicaerform1'
+                  placeholder="e.g., publicaerform1"
                 />
               </label>
-              <div className='url-display'>
-                <span className='url-label'>API Endpoint:</span>
-                <code className='url-code'>{formUrl}</code>
+              <div className="url-display">
+                <span className="url-label">API Endpoint:</span>
+                <code className="url-code">{formUrl}</code>
               </div>
             </div>
           </main>
           {UserType.External === userType && (
-            <main className='app-main'>
-              <div className='form-container'>
+            <main className="app-main">
+              <div className="form-container">
                 <Form
                   key={formUrl}
                   src={formUrl}
@@ -98,8 +102,8 @@ const FormPage = () => {
             </main>
           )}
           {UserType.Internal === userType && (
-            <main className='app-main'>
-              <div className='submission-list-container'>
+            <main className="app-main">
+              <div className="submission-list-container">
                 <SubmissionList formUrl={formUrl} />
               </div>
             </main>
